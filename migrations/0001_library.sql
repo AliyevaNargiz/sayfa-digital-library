@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS books (
+ id TEXT PRIMARY KEY,
+ data TEXT NOT NULL,
+ created_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS login_attempts (
+ ip TEXT PRIMARY KEY,
+ attempts INTEGER NOT NULL DEFAULT 0,
+ window_start INTEGER NOT NULL
+);

@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792602848767,
+      "tag": "0000_dusty_nextwave",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792603278651,
+      "tag": "0001_hard_dark_phoenix",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793109980026,
+      "tag": "0002_lyrical_odin",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1793110761522,
+      "tag": "0003_robust_triathlon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1793805912619,
+      "tag": "0004_categories",
+      "breakpoints": true
+    }
+  ]
+}

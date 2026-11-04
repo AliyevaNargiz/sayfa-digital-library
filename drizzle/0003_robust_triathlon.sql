@@ -1,0 +1,1 @@
+ALTER TABLE `digital_files` ADD `cover_key` text;

@@ -1,0 +1,14 @@
+node_modules/
+.data/
+.wrangler/
+.dev.vars
+.env
+*.zip
+dist/
+hosted-assets.json
+public/file-metadata.js
+public/pdf.worker.mjs
+
+public/ocr-reader.js
+public/tesseract-worker.js
+.env.*

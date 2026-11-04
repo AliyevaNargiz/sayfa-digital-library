@@ -1,0 +1,10 @@
+import sys,json,subprocess,os,termios
+attributes=termios.tcgetattr(sys.stdin); hidden=attributes[:];hidden[3]&=~termios.ECHO;termios.tcsetattr(sys.stdin,termios.TCSANOW,hidden)
+print('Ready for repository credential on stdin (input is hidden).',flush=True)
+try: cred=json.loads(sys.stdin.readline())
+finally: termios.tcsetattr(sys.stdin,termios.TCSANOW,attributes)
+env=os.environ.copy()
+if cred.get('auth_mode')!='work_proxy': env.update({'GIT_TERMINAL_PROMPT':'0','GIT_CONFIG_COUNT':'1','GIT_CONFIG_KEY_0':'http.extraHeader','GIT_CONFIG_VALUE_0':'Authorization: Bearer '+cred['token']})
+subprocess.run(['git','remote','set-url','origin',cred['remote_url']],check=True)
+subprocess.run(['git','push','-u','origin','HEAD:'+cred['branch']],check=True,env=env)
+print(json.dumps({'commit_sha':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()}))
