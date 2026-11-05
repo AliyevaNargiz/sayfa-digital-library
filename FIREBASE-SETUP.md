@@ -28,6 +28,6 @@ The Google project remains yours. It can have free-tier limits, provider restric
 
 ## Multi-country use
 
-The first visit suggests a language from browser settings, not location tracking: English, Türkçe, Azərbaycan dili, Русский. Native names and sample national flags identify the choices. The menu can change the choice later. Unsupported browser languages fall back to English. More locales can be added to `public/messages.js` and `public/i18n.js`.
+The first visit suggests a language from trusted hosting country metadata, regional timezone hints, and device languages: English, Türkçe, Azərbaycan dili, Русский. Native names and sample national flags identify the choices. Only explicit confirmation saves the choice. Account settings and a small footer link can change it later. No GPS request, external IP lookup, or location database is used. A confirmed choice takes precedence over regional suggestions. If no supported regional or language hint is available, the interface falls back to English. More locales can be added to `public/messages.js` and `public/i18n.js`.
 
 The interface is translated; book titles, user-created categories, descriptions, notes, recognized OCR text, and filenames stay in their original language. OCR currently reads Turkish and English; choosing another interface language does not add a new OCR model or a translation service. No generative AI is connected.

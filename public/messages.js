@@ -1,4 +1,4 @@
-/* UI copy only. Book data stays in its original language. Columns: English, Azerbaijani, Russian. */
+/* UI copy only. Columns: English, Azerbaijani, Russian. */
 window.SAYFA_MESSAGES={
  "Ana gezinme": [
   "Main navigation",
@@ -2039,5 +2039,175 @@ window.SAYFA_MESSAGES={
   "Fantasy & science fiction",
   "Fantastika və elmi fantastika",
   "Фэнтези и фантастика"
+ ],
+ "BİR KİTAPLIKTAN DAHA FAZLASI": [
+  "A LITTLE MORE THAN A LIBRARY",
+  "KİTABXANADAN BİR AZ DAHA ARTIQ",
+  "ЧУТЬ БОЛЬШЕ, ЧЕМ БИБЛИОТЕКА"
+ ],
+ "Kitapların için": [
+  "A place for",
+  "Kitabların üçün",
+  "Место для"
+ ],
+ "bir yer.": [
+  "your books.",
+  "bir məkan.",
+  "ваших книг."
+ ],
+ "Rafında, çantanda, ekranında. Sevdiğin bütün kitaplara aynı yerden dön.": [
+  "On your shelf, in your bag, on your screen. Come back to all your books in one familiar place.",
+  "Rəfində, çantanda, ekranında. Sevdiyin bütün kitablara eyni doğma məkandan qayıt.",
+  "На полке, в сумке, на экране. Возвращайтесь ко всем своим книгам в одно знакомое место."
+ ],
+ "Kitaplığını aç": [
+  "Open your library",
+  "Kitabxananı aç",
+  "Открыть библиотеку"
+ ],
+ "Zaten üyeyim": [
+  "I’m already a member",
+  "Artıq hesabım var",
+  "У меня уже есть аккаунт"
+ ],
+ "Kendine ait. Sakin. Her zaman elinin altında.": [
+  "Your own. Unhurried. Always close by.",
+  "Özünə aid. Sakit. Həmişə əlçatan.",
+  "Своё. Неспешное. Всегда под рукой."
+ ],
+ "Yarım kalan bir hikâye,": [
+  "A story left unfinished,",
+  "Yarımçıq qalan bir hekayə,",
+  "Незаконченная история,"
+ ],
+ "her zaman dönebileceğin bir yer.": [
+  "a place you can always come back to.",
+  "həmişə qayıda biləcəyin bir məkan.",
+  "место, куда всегда можно вернуться."
+ ],
+ "KİŞİSEL KOLEKSİYON": [
+  "PERSONAL COLLECTION",
+  "ŞƏXSİ KOLLEKSİYA",
+  "ЛИЧНАЯ КОЛЛЕКЦИЯ"
+ ],
+ "Her kitabın": [
+  "Every book,",
+  "Hər kitabın",
+  "Для каждой книги"
+ ],
+ "bir yeri var.": [
+  "a place to belong.",
+  "öz yeri var.",
+  "найдётся место."
+ ],
+ "Fiziksel + dijital": [
+  "Physical + digital",
+  "Fiziki + rəqəmsal",
+  "Бумажные + цифровые"
+ ],
+ "Tek bir kitaplıkta.": [
+  "One personal library.",
+  "Bir şəxsi kitabxanada.",
+  "В одной личной библиотеке."
+ ],
+ "YALNIZCA SANA AİT": [
+  "YOURS TO KEEP",
+  "YALNIZ SƏNƏ AİD",
+  "ТОЛЬКО ВАШЕ"
+ ],
+ "HER KİTABIN BİR BAŞLANGICI VAR": [
+  "EVERY BOOK STARTS SOMEWHERE",
+  "HƏR KİTABIN BİR BAŞLANĞICI VAR",
+  "У КАЖДОЙ КНИГИ ЕСТЬ НАЧАЛО"
+ ],
+ "Nereden başlayalım?": [
+  "Where shall we start?",
+  "Haradan başlayaq?",
+  "С чего начнём?"
+ ],
+ "Elindeki kitap.": [
+  "The book in your hands.",
+  "Əlindəki kitab.",
+  "Книга у вас в руках."
+ ],
+ "Kapağını fotoğrafla, birlikte bulalım.": [
+  "Take a cover photo. We’ll help find it.",
+  "Üz qabığını çək, birlikdə tapaq.",
+  "Сфотографируйте обложку — поможем найти."
+ ],
+ "Ekranındaki sayfalar.": [
+  "The pages on your screen.",
+  "Ekranındakı səhifələr.",
+  "Страницы на экране."
+ ],
+ "PDF, EPUB ve dosyalarına bir raf aç.": [
+  "Make a shelf for your PDFs, EPUBs, and files.",
+  "PDF, EPUB və fayllarına bir rəf ayır.",
+  "Найдите полку для PDF, EPUB и файлов."
+ ],
+ "Aklındaki bir isim.": [
+  "A title on your mind.",
+  "Yadında qalan bir ad.",
+  "Название, которое вы помните."
+ ],
+ "Kitabın adını yaz, ayrıntılarını bulalım.": [
+  "Type the title. We’ll look up the details.",
+  "Kitabın adını yaz, məlumatlarını tapaq.",
+  "Введите название — найдём сведения."
+ ],
+ "AZ BİRAZ DÜZEN, BOLCA HİKÂYE": [
+  "A LITTLE ORDER. A LOT OF STORIES.",
+  "BİR AZ QAYDA, ÇOXLU HEKAYƏ",
+  "НЕМНОГО ПОРЯДКА. МНОГО ИСТОРИЙ."
+ ],
+ "Kitaplarını bir arada tut.": [
+  "Keep your books together.",
+  "Kitablarını bir yerdə saxla.",
+  "Соберите книги вместе."
+ ],
+ "Okumaya yer kalsın.": [
+  "Leave room for reading.",
+  "Oxumağa yer qalsın.",
+  "Пусть останется место для чтения."
+ ],
+ "Fiziksel kitapların, dijital dosyaların, kişisel notların. Her şey kendi hesabında; senin kurduğun düzende.": [
+  "Your physical books, digital files, and personal notes. All in your own account, in an order that feels like you.",
+  "Fiziki kitabların, rəqəmsal faylların, şəxsi qeydlərin. Hamısı öz hesabında, sənin qurduğun qaydada.",
+  "Бумажные книги, цифровые файлы, личные заметки. Всё в вашем аккаунте, в удобном вам порядке."
+ ],
+ "Sıcak gün ışığında ahşap raflarda eski kitaplar": [
+  "Old books on wooden shelves in warm daylight",
+  "İlıq gün işığında taxta rəflərdə köhnə kitablar",
+  "Старинные книги на деревянных полках в тёплом дневном свете"
+ ],
+ "Raflarına göz at": [
+  "Browse your shelves",
+  "Rəflərinə nəzər sal",
+  "Посмотреть полки"
+ ],
+ "Dil tercihini değiştir": [
+  "Change language preference",
+  "Dil seçimini dəyiş",
+  "Изменить язык"
+ ],
+ "Bölge ve cihaz ayarlarına göre önerildi. Seçimin bu cihazda hatırlanır.": [
+  "Suggested from your region and device settings. We’ll remember your choice on this device.",
+  "Bölgə və cihaz ayarlarına görə təklif edilir. Seçimin bu cihazda yadda saxlanacaq.",
+  "Предложено по региону и настройкам устройства. Мы запомним ваш выбор на этом устройстве."
+ ],
+ "Dilini daha sonra hesap ayarlarından değiştirebilirsin.": [
+  "You can change it later in your account settings.",
+  "Dilini sonra hesab ayarlarından dəyişə bilərsən.",
+  "Позже язык можно изменить в настройках аккаунта."
+ ],
+ "EST. FOR YOUR EVERYDAY": [
+  "FOR YOUR EVERYDAY",
+  "HƏR GÜNÜN ÜÇÜN",
+  "ДЛЯ ВАШИХ БУДНЕЙ"
+ ],
+ "THE READING ROOM / SAYFA": [
+  "THE READING ROOM / SAYFA",
+  "OXU OTAĞI / SAYFA",
+  "ЧИТАЛЬНЫЙ ЗАЛ / SAYFA"
  ]
 };

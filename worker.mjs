@@ -1,3 +1,4 @@
+import {localeHint} from './locale-service.mjs';
 import {requestIdentity,findUser,registerUser,claimLegacyLibrary,userDescriptor,publicAuthConfig,identityCookie,clearIdentityCookie,isAdministrator} from './identity-service.mjs';
 import {accountRequest} from './account-service.mjs';
 import {bookInsert,changed,limits} from './quota-service.mjs';
@@ -36,6 +37,7 @@ export async function handleApi(request,env) {
   const origin=request.headers.get('origin');if(origin&&origin!==url.origin)return json({error:'Bu isteğe izin verilmiyor.'},403);
   if(!(['/api/digital-files','/api/photo-books'].includes(path)&&request.method==='POST'&&request.headers.get('content-type')?.startsWith('multipart/form-data;'))&&request.headers.get('content-type')?.split(';')[0]!=='application/json')return json({error:'Geçerli veri gönderin.'},415);
  }
+ if(path==='/api/locale'&&request.method==='GET')return json(localeHint(request));
  if(path==='/api/auth/config'&&request.method==='GET')return json(publicAuthConfig(env));
  if(path==='/api/login'&&request.method==='POST'&&!env.HOSTED&&!env.FIREBASE_PROJECT_ID){
   const ip=request.headers.get('cf-connecting-ip')||'local',now=Date.now();
