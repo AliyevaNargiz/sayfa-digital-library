@@ -3,7 +3,7 @@ const {execFileSync}=await import('node:child_process');execFileSync('python3',[
 import {readFile,writeFile,mkdir,copyFile,readdir} from 'node:fs/promises';
 import {build} from 'esbuild';
 const assets={};
-for(const [name,type] of Object.entries({'index.html':'text/html; charset=utf-8','app.js':'text/javascript; charset=utf-8','file-metadata.js':'text/javascript; charset=utf-8','pdf.worker.mjs':'text/javascript; charset=utf-8','style.css':'text/css; charset=utf-8','icon.svg':'image/svg+xml','install-app.js':'text/javascript; charset=utf-8','sw.js':'text/javascript; charset=utf-8','manifest.webmanifest':'application/manifest+json','ocr-reader.js':'text/javascript; charset=utf-8','tesseract-worker.js':'text/javascript; charset=utf-8'})){
+for(const [name,type] of Object.entries({'index.html':'text/html; charset=utf-8','app.js':'text/javascript; charset=utf-8','file-metadata.js':'text/javascript; charset=utf-8','pdf.worker.mjs':'text/javascript; charset=utf-8','style.css':'text/css; charset=utf-8','icon.svg':'image/svg+xml','install-app.js':'text/javascript; charset=utf-8','sw.js':'text/javascript; charset=utf-8','manifest.webmanifest':'application/manifest+json','ocr-reader.js':'text/javascript; charset=utf-8','tesseract-worker.js':'text/javascript; charset=utf-8','auth-client.js':'text/javascript; charset=utf-8','auth-ui.js':'text/javascript; charset=utf-8'})){
  let body=await readFile('public/'+name,'utf8');
  if(name==='index.html')body=body.replace('id="lock-button"','id="lock-button" hidden');
  assets['/'+name]={body,type};

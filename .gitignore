@@ -12,3 +12,5 @@ public/pdf.worker.mjs
 public/ocr-reader.js
 public/tesseract-worker.js
 .env.*
+
+public/auth-client.js

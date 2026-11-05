@@ -1,11 +1,9 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-export const books=sqliteTable('books',{id:text('id').primaryKey(),data:text('data').notNull(),createdAt:text('created_at').notNull()});
+import {sqliteTable,text,integer,primaryKey,uniqueIndex,index} from 'drizzle-orm/sqlite-core';
+export const books=sqliteTable('books',{id:text('id').notNull(),ownerId:text('owner_id').notNull().default('__legacy__'),data:text('data').notNull(),createdAt:text('created_at').notNull()},table=>[primaryKey({columns:[table.ownerId,table.id]})]);
 export const loginAttempts=sqliteTable('login_attempts',{ip:text('ip').primaryKey(),attempts:integer('attempts').notNull().default(0),windowStart:integer('window_start').notNull()});
 export const libraryImports=sqliteTable('library_imports',{id:text('id').primaryKey(),completedAt:text('completed_at').notNull()});
-export const digitalFiles=sqliteTable('digital_files',{
- id:text('id').primaryKey(),bookId:text('book_id').notNull(),objectKey:text('object_key').notNull(),
- fileName:text('file_name').notNull(),mime:text('mime').notNull(),size:integer('size').notNull(),
- hash:text('hash').notNull().unique(),coverKey:text('cover_key'),uploadedAt:text('uploaded_at').notNull()
-});
-
-export const categories=sqliteTable('categories',{id:text('id').primaryKey(),name:text('name').notNull(),normalized:text('normalized').notNull().unique()});
+export const digitalFiles=sqliteTable('digital_files',{id:text('id').primaryKey(),ownerId:text('owner_id').notNull().default('__legacy__'),bookId:text('book_id').notNull(),objectKey:text('object_key').notNull(),fileName:text('file_name').notNull(),mime:text('mime').notNull(),size:integer('size').notNull(),coverSize:integer('cover_size').notNull().default(0),hash:text('hash').notNull(),coverKey:text('cover_key'),uploadedAt:text('uploaded_at').notNull()},table=>[uniqueIndex('digital_files_owner_hash_unique').on(table.ownerId,table.hash)]);
+export const categories=sqliteTable('categories',{id:text('id').primaryKey(),ownerId:text('owner_id').notNull().default('__legacy__'),name:text('name').notNull(),normalized:text('normalized').notNull()},table=>[uniqueIndex('categories_owner_normalized_unique').on(table.ownerId,table.normalized)]);
+export const users=sqliteTable('users',{id:text('id').primaryKey(),email:text('email'),normalizedEmail:text('normalized_email').unique(),displayName:text('display_name').notNull(),createdAt:text('created_at').notNull(),lastSeen:text('last_seen').notNull()});
+export const identities=sqliteTable('identities',{provider:text('provider').notNull(),subject:text('subject').notNull(),userId:text('user_id').notNull()},table=>[primaryKey({columns:[table.provider,table.subject]}),index('identities_user_idx').on(table.userId)]);
+export const uploadReservations=sqliteTable('upload_reservations',{id:text('id').primaryKey(),ownerId:text('owner_id').notNull(),bytes:integer('bytes').notNull(),createdAt:integer('created_at').notNull()},table=>[index('upload_reservations_owner_idx').on(table.ownerId)]);

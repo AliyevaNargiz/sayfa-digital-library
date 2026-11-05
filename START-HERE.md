@@ -1,16 +1,9 @@
-# Necle’nin Kütüphanesi — başlangıç
+# Sayfa — başlangıç
 
-Bu proje Necle için hazırlanmış, tamamen bağımsız ve boş başlayan bir kitaplıktır. Ahmad’ın kitapları veya dosyaları dahil değildir.
+Node.js 24+ yükleyin. Hazır kaynak ZIP’inde bu klasörden `node scripts/start-portable.mjs` çalıştırın ve http://127.0.0.1:3000 açın. Git deposunda önce `npm ci` ve `npm run build:client` çalıştırın.
 
-1. https://nodejs.org/ adresinden Node.js 24 veya daha yeni bir sürüm yükleyin.
-2. ZIP’i açıp bu klasörde bir terminal açın.
-3. `node scripts/start-portable.mjs` çalıştırın.
-4. http://127.0.0.1:3000 adresini açın.
+Yerel geliştirme güvenilen tek kullanıcı içindir; internette çok kullanıcılı sunmak için README içindeki kimlik sağlayıcısı ve D1/R2 ayarlarını uygulayın. Sites sürümü yönetilen ChatGPT girişi kullanır. Firebase bağlanmadan Google ve doğrudan e-posta/şifre girişi etkin değildir.
 
-Kaynak ZIP’inde hazır tarayıcı dosyaları bulunur; ilk çalıştırma için `npm install` gerekmez. Git deposundan kurulum yaparken `npm ci` ve `npm run build:client` gerekir.
+Kitaplar aynı katalogda birleşir. Elle ekleyin, ad/ISBN aratın, kapak fotoğraflarını inceleyerek aktarın veya dijital dosyalar yükleyin. Yeni hesaplar boştur. Veriler yerelde `.data` klasöründedir; sunucu kapalıyken tümünü yedekleyin.
 
-Tüm kitaplar tek katalogda görünür. **Kitap ekle** elle kayıt açar; başlık veya ISBN araması alanları doldurabilir. **Fotoğrafla ekle** kamerayı ve toplu fotoğraf seçimini açar. **Dijital dosya ekle** PDF, EPUB ve belgeleri içe aktarır. Kategoriler ayrıca oluşturulabilir. Hazır kayıtları inceleyip kaydedin; bulunamayan bilgi uydurulmaz.
-
-Kayıtlar `.data/library.sqlite`, yüklenen dosyalar `.data/files/` içinde kalır. Sunucu kapalıyken `.data` klasörünün tamamını yedekleyin. Katalog JSON yedeği dosya içeriklerini taşımaz. Fotoğraf okuma ilk kullanımda internetten dil dosyaları indirir; fotoğrafın kendisi dış OCR servislerine gönderilmez.
-
-Arayüzü `public/`, sunucuyu kökteki `.mjs` dosyalarından, OCR ve belge işlemlerini `client/` klasöründen değiştirebilirsiniz. Geliştirme, test, kendi hesabınızda barındırma ve gizlilik ayrıntıları için `README.md` dosyasını okuyun.
+Ayrıntılar ve uygulamanın başlangıç kapasitesi README.md içindedir.

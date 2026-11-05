@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {startServer,databaseAdapter} from '../server.mjs';
 import worker from '../worker.mjs';
 import {DatabaseSync} from 'node:sqlite';
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir} from 'node:fs/promises';
 let app;
 before(async()=>{app=await startServer({port:0,dbPath:':memory:'});});
 after(async()=>{await new Promise(r=>app.server.close(r));app.db.close();});
@@ -32,11 +32,11 @@ test('invalid writes are rejected without inserting books',async()=>{
 });
 test('static assets have content types and security headers',async()=>{for(const path of ['/','/app.js','/style.css']){const r=await fetch(app.url+path);assert.equal(r.status,200);assert.equal(r.headers.get('x-content-type-options'),'nosniff');assert.match(r.headers.get('content-security-policy'),/frame-ancestors 'none'/);}assert.equal((await fetch(app.url+'/missing')).status,404);});
 test('cloud API requires a password, signs sessions, logs out and rate limits login',async()=>{
- const db=new DatabaseSync(':memory:');db.exec(await readFile(new URL('../migrations/0001_library.sql',import.meta.url),'utf8'));
+ const db=new DatabaseSync(':memory:');for(const file of (await readdir(new URL('../drizzle/',import.meta.url))).filter(n=>n.endsWith('.sql')).sort())db.exec(await readFile(new URL('../drizzle/'+file,import.meta.url),'utf8'));
  const env={DB:databaseAdapter(db),APP_PASSWORD:'correct horse battery staple'};
  const req=(path,method='GET',data,headers={})=>new Request('https://library.example/api/'+path,{method,headers:{'Content-Type':'application/json',...headers},...(data?{body:JSON.stringify(data)}:{})});
  assert.equal((await worker.fetch(req('books'),env)).status,401);
- assert.equal((await worker.fetch(req('session'),{DB:env.DB})).status,503);
+ assert.equal((await worker.fetch(req('session'),{DB:env.DB})).status,200);
  assert.equal((await worker.fetch(req('login','POST',{password:'wrong'}),env)).status,401);
  const login=await worker.fetch(req('login','POST',{password:env.APP_PASSWORD}),env);assert.equal(login.status,200);const cookie=login.headers.get('set-cookie');assert.match(cookie,/HttpOnly/);assert.match(cookie,/Secure/);
  assert.equal((await worker.fetch(req('books','GET',null,{cookie}),env)).status,200);
