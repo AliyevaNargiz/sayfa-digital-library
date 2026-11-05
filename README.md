@@ -4,7 +4,9 @@ Türkçe, telefon/tablet/bilgisayara uygun kişisel kitaplık uygulaması. Her k
 
 ## Özellikler
 
-- Merkezlenmiş ana sayfa, modern krem/yeşil tasarım, giriş/kayıt, kitaplık, okuma rehberi ve hesap ekranları.
+- Merkezlenmiş ana sayfa; koyu mavi, mercan, lila ve krem renkler; özgün kitap simgesi, kalın Bricolage Grotesque başlıklar ve Source Sans 3 metin. Fontlar yerelden sunulur.
+- İngilizce, Türkçe, Azerbaycanca ve Rusça arayüz; ilk ziyarette tarayıcı diline göre öneri, bayrak ve yerel dil adlarıyla seçim, hatırlanan tercih ve üst menüden değiştirme. Kitap bilgileri ve kullanıcı içeriği çevrilmez.
+- Giriş/kayıt, kitaplık, okuma rehberi ve hesap ekranları. Hareket azaltma tercihine saygılı hafif animasyonlar ve küçük ekranlara uygun düzen.
 - Elle ekleme ve kitap adı/ISBN ile kapak, yazar, yayınevi, açıklama ve diğer katalog bilgilerini otomatik bulma. Bulunamayan bilgi uydurulmaz; her alan düzenlenebilir.
 - Telefon kamerasından veya galeriden çoklu fotoğraf. Tesseract.js Türkçe/İngilizce metni cihazda okur; metin/ISBN kitap kataloglarında aranır. Kaydetmeden önce adaylar incelenir. Net kapak fotoğrafları önerilir.
 - PDF, EPUB, ofis/metin belgelerini toplu yükleme, metadata/metin/kapak çıkarma; aynı kullanıcının aynı dosyası tekrar eklenmez. Dosya başına 25 MB, fotoğraf başına 15 MB. İçe aktarma durdurulabilir; yeni işlem önceki dosya adlarını temizler.
@@ -61,3 +63,5 @@ Kendi Cloudflare hesabınızda D1/R2 oluşturup `wrangler.jsonc` yer tutucuları
 OCR ilk kullanımda dil dosyalarını jsDelivr üzerinden indirir. Fotoğraf harici OCR servisine gönderilmez. Bulunan metin/ISBN Ali & Nino ve Open Library kataloglarına gönderilir. Dosyalar kullanıcıya ait depoda saklanır; konu eşleştirme sunucuda kendi kayıtları üzerinde çalışır. Bulunamayan açıklama açıkça belirtilir, konu özeti uydurulmaz.
 
 Testler API, kullanıcılar arası izolasyon, migration, yetkiler, eşzamanlı depolama kotası, token doğrulama ve arayüz akışlarını kapsar. Gerçek telefon kamerası, cihaz kurulumu ve bağlanmamış Firebase sağlayıcısı ayrı cihaz/sağlayıcı testi gerektirir. Kapak resimleri ilgili hak sahiplerine aittir.
+
+E-posta/Google girişinin neden isteğe bağlı olduğu, hangi verinin nerede saklandığı ve adım adım kurulum için [FIREBASE-SETUP.md](FIREBASE-SETUP.md) dosyasına bakın.
