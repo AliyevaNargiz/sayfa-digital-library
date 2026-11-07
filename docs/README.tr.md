@@ -64,7 +64,7 @@ OCR ilk kullanımda dil dosyalarını jsDelivr üzerinden indirir. Fotoğraf har
 
 Testler API, kullanıcılar arası izolasyon, migration, yetkiler, eşzamanlı depolama kotası, token doğrulama ve arayüz akışlarını kapsar. Gerçek telefon kamerası, cihaz kurulumu ve bağlanmamış Firebase sağlayıcısı ayrı cihaz/sağlayıcı testi gerektirir. Kapak resimleri ilgili hak sahiplerine aittir.
 
-E-posta/Google girişinin neden isteğe bağlı olduğu, hangi verinin nerede saklandığı ve adım adım kurulum için [FIREBASE-SETUP.md](FIREBASE-SETUP.md) dosyasına bakın.
+E-posta/Google girişinin neden isteğe bağlı olduğu, hangi verinin nerede saklandığı ve adım adım kurulum için [FIREBASE-SETUP.md](../FIREBASE-SETUP.md) dosyasına bakın.
 
 Başlık ve gövde fontlarının Ə/ə ve tüm Azerbaycan Latin harfleri ile Kiril glifleri kontrol edildi. Dil seçimi yalnız açık onaydan sonra saklanır. Önceki sürümün eski dil tercihi bir defa yeniden onaylanır. Bölge uç noktası yalnız barındırmanın güvenilir `request.cf.country` bilgisini kullanır; GPS veya harici IP servisi çağrılmaz, konum veritabanına yazılmaz. Ülke bilgisi yoksa Bakü saat dilimi Azerbaycancayı önerir; onaylanan tercih her zaman önceliklidir.
 
