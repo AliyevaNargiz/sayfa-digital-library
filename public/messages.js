@@ -2389,5 +2389,10 @@ window.SAYFA_MESSAGES={
   "Invalid import batch.",
   "İdxal paketi düzgün deyil.",
   "Некорректный пакет импорта."
+ ],
+ "Google hesabınla güvenli giriş yap. Önceki kitaplığın için aynı e-posta adresini kullan.": [
+  "Sign in securely with Google. Use the same email address to access your existing library.",
+  "Google hesabınla təhlükəsiz daxil ol. Əvvəlki kitabxanan üçün eyni e-poçt ünvanından istifadə et.",
+  "Войдите безопасно через Google. Используйте прежний адрес почты, чтобы открыть существующую библиотеку."
  ]
 };

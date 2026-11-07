@@ -1,6 +1,6 @@
 # Optional email and Google login
 
-Sayfa currently uses ChatGPT Sites’ managed ChatGPT sign-in. No Firebase project is connected. Firebase is an optional identity provider for direct email/password and Google sign-in; it is not needed for the current library to work.
+Sayfa’s hosted configuration uses Firebase Authentication for Google sign-in. ChatGPT sign-in remains the fallback mode when no Firebase configuration is supplied. Book records and uploads continue to use the existing D1/R2 bindings. No Analytics SDK is initialized.
 
 ## Where information lives
 
@@ -8,12 +8,14 @@ Sayfa currently uses ChatGPT Sites’ managed ChatGPT sign-in. No Firebase proje
 | --- | --- | --- |
 | Book records, categories, notes, app profiles | Managed Cloudflare D1 database attached to this Site | Same D1 database |
 | PDFs, EPUBs, documents, private cover previews | Managed Cloudflare R2 bucket attached to this Site | Same R2 bucket |
-| Sign-in credentials | Managed ChatGPT sign-in provider | Firebase Authentication |
+| Sign-in credentials | Firebase Authentication (Google) | Firebase Authentication |
 | Interface language preference | This browser’s local storage | Same browser preference |
 
 Signing in to the same account on another device opens the same server-side library. Private records are not stored in the source-code ZIP or cached for offline reading. This is an installable web app (PWA), not an App Store/Play Store native package; it needs an internet connection for the library.
 
 ## Connect Firebase Authentication
+
+Email/password fields are hidden by default. Enable that provider in Firebase and set `FIREBASE_EMAIL_PASSWORD_ENABLED=true` only if direct email registration is wanted. Google sign-in does not require a separate application password.
 
 1. Open https://console.firebase.google.com/ using the Google account that should own the project. Choose **Create a project**. Analytics is optional.
 2. Open **Build → Authentication → Get started → Sign-in method**. Enable **Email/Password** and, if wanted, **Google**. Choose a support email for Google login.

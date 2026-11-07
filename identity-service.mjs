@@ -3,7 +3,7 @@ let keyCache={expires:0,fetchedAt:0,keys:[]};
 const decode=value=>JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))));
 const normalized=email=>String(email||'').trim().toLocaleLowerCase('en-US');
 export const authMode=env=>env.FIREBASE_PROJECT_ID&&env.FIREBASE_API_KEY&&env.FIREBASE_AUTH_DOMAIN?'firebase':env.HOSTED?'chatgpt':'local';
-export function publicAuthConfig(env){return {provider:authMode(env),firebase:authMode(env)==='firebase'?{apiKey:env.FIREBASE_API_KEY,authDomain:env.FIREBASE_AUTH_DOMAIN,projectId:env.FIREBASE_PROJECT_ID,appId:env.FIREBASE_APP_ID||undefined}:null,passwordProtected:!!env.APP_PASSWORD,signInPath:'/signin-with-chatgpt',signOutPath:'/signout-with-chatgpt'};}
+export function publicAuthConfig(env){return {provider:authMode(env),emailPasswordEnabled:env.FIREBASE_EMAIL_PASSWORD_ENABLED==='true',firebase:authMode(env)==='firebase'?{apiKey:env.FIREBASE_API_KEY,authDomain:env.FIREBASE_AUTH_DOMAIN,projectId:env.FIREBASE_PROJECT_ID,appId:env.FIREBASE_APP_ID||undefined}:null,passwordProtected:!!env.APP_PASSWORD,signInPath:'/signin-with-chatgpt',signOutPath:'/signout-with-chatgpt'};}
 export async function verifyFirebaseToken(token,projectId,fetcher=fetch){
  try{
   if(typeof token!=='string'||token.length>12000)return null;const parts=token.split('.');if(parts.length!==3)return null;const header=decode(parts[0]),payload=decode(parts[1]),now=Math.floor(Date.now()/1000);

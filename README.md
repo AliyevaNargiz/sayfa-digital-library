@@ -16,9 +16,9 @@ Türkçe, telefon/tablet/bilgisayara uygun kişisel kitaplık uygulaması. Her k
 
 ## Kimlik ve özel veriler
 
-ChatGPT Sites dağıtımında platformun yönetilen ChatGPT girişi kullanılır. Kullanıcı kayıt profili doğrulanmış platform kimliğinden oluşturulur; uygulama şifre tutmaz. Halka açık ana sayfa, API erişimi anlamına gelmez. Kitap, kategori ve dosya erişimleri sunucuda kullanıcı kimliğiyle sınırlandırılır. Başka hesaba ait dosya bağlantıları çalışmaz.
+Canlı Sites yapılandırmasında Firebase Authentication üzerinden Google girişi kullanılır. Firebase değişkenleri tanımlı değilse platformun yönetilen ChatGPT girişi kullanılır. Kullanıcı kayıt profili doğrulanmış platform kimliğinden oluşturulur; uygulama şifre tutmaz. Halka açık ana sayfa, API erişimi anlamına gelmez. Kitap, kategori ve dosya erişimleri sunucuda kullanıcı kimliğiyle sınırlandırılır. Başka hesaba ait dosya bağlantıları çalışmaz.
 
-İsteğe bağlı Firebase modülü e-posta/şifre, e-posta doğrulama, şifre sıfırlama ve Google girişini içerir. **Firebase projesi bağlanıp yapılandırılmadan bu seçenekler yayında etkin değildir.** Kendi barındırmanızda Firebase Authentication içinde Email/Password ve Google sağlayıcılarını etkinleştirin, alan adınızı authorized domains listesine ekleyin; aşağıdaki runtime değişkenlerini ayarlayın:
+İsteğe bağlı Firebase modülü e-posta/şifre, e-posta doğrulama, şifre sıfırlama ve Google girişini içerir. Google sağlayıcısı Firebase projesinde etkinleştirilip Site runtime ayarlarıyla bağlanır. E-posta/şifre arayüzü varsayılan olarak gizlidir; bu sağlayıcı ayrıca etkinleştirilip `FIREBASE_EMAIL_PASSWORD_ENABLED=true` ayarlanmalıdır. Kendi barındırmanızda Firebase Authentication içinde Email/Password ve Google sağlayıcılarını etkinleştirin, alan adınızı authorized domains listesine ekleyin; aşağıdaki runtime değişkenlerini ayarlayın:
 
 - `FIREBASE_PROJECT_ID`, `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, isteğe bağlı `FIREBASE_APP_ID`.
 - `APP_OWNER_EMAIL`: doğrulanmış yönetici e-postası; gizli sunucu ayarı olarak tutun. İlk kayıt olan kişi yönetici olmaz.
@@ -48,7 +48,7 @@ npm test
 
 http://127.0.0.1:3000 açılır. Yerel geliştirme modu tek güvenilen kullanıcı içindir; kimlik sağlayıcısı yapılandırmadan internete açmayın. Yerel veriler `.data/library.sqlite` ve `.data/files/` içinde saklanır. Sunucuyu durdurup tüm `.data` klasörünü yedekleyin. Hazır kaynak ZIP’inde bağımlılıksız başlatma: `node scripts/start-portable.mjs`.
 
-Arayüz: vanilla JavaScript, HTML ve CSS. Sunucu: JavaScript ES modules / Cloudflare Workers. Veritabanı: SQLite/D1, Drizzle şema/migration; dosyalar R2. Tarayıcı modülleri esbuild ile derlenir. React/Next.js kullanılmaz. OCR: Tesseract.js, PDF: PDF.js, kimlik: yönetilen ChatGPT veya isteğe bağlı Firebase SDK.
+Arayüz: vanilla JavaScript, HTML ve CSS. Sunucu: JavaScript ES modules / Cloudflare Workers. Veritabanı: SQLite/D1, Drizzle şema/migration; dosyalar R2. Tarayıcı modülleri esbuild ile derlenir. React/Next.js kullanılmaz. OCR: Tesseract.js, PDF: PDF.js, kimlik: Firebase SDK / Google veya yapılandırılmamış kopyalarda yönetilen ChatGPT.
 
 Arayüz `public/`, sunucu kökteki `.mjs`, belge/OCR/kimlik modülleri `client/` içindedir. Client değişikliklerinden sonra `npm run build:client` gerekir.
 
