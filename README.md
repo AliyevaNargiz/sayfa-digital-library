@@ -67,3 +67,15 @@ Testler API, kullanıcılar arası izolasyon, migration, yetkiler, eşzamanlı d
 E-posta/Google girişinin neden isteğe bağlı olduğu, hangi verinin nerede saklandığı ve adım adım kurulum için [FIREBASE-SETUP.md](FIREBASE-SETUP.md) dosyasına bakın.
 
 Başlık ve gövde fontlarının Ə/ə ve tüm Azerbaycan Latin harfleri ile Kiril glifleri kontrol edildi. Dil seçimi yalnız açık onaydan sonra saklanır. Önceki sürümün eski dil tercihi bir defa yeniden onaylanır. Bölge uç noktası yalnız barındırmanın güvenilir `request.cf.country` bilgisini kullanır; GPS veya harici IP servisi çağrılmaz, konum veritabanına yazılmaz. Ülke bilgisi yoksa Bakü saat dilimi Azerbaycancayı önerir; onaylanan tercih her zaman önceliklidir.
+
+## CSV ile kitaplığı taşıma
+
+**Hesabım → Kitaplığını yanında götür → CSV indir / CSV yükle.** CSV, UTF-8 BOM ve standart alıntılama ile hazırlanır; Azerbaycanca/Kiril harfleri, virgüller, çift tırnaklar ve çok satırlı açıklama/notlar korunur. Elektronik tablo formülleri düz metin olarak dışa aktarılır, Sayfa tekrar yüklerken özgün metni geri alır.
+
+Tüm kitap kayıtları (fiziksel/dijital ayrımı, okuma durumu, notlar, açıklama, ödünç alan/tarihler, ISBN, yayınevi, dil, raf, kapak bilgisi ve çıkarılmış belge metni) ve boş kategoriler taşınır. Sabit İngilizce sütun adları diğer uygulamalarda eşleme yapmayı kolaylaştırır. Türkçe, Azerbaycanca ve Rusça temel sütun adları ile virgül/noktalı virgül/sekme ayracı da okunabilir. Diğer uygulamaların Sayfa CSV alanlarını desteklemesi veya eşlemesi gerekir.
+
+Yükleme önce satırları denetler; hatalı satır varsa yazma başlamaz. En fazla 20 MB ve 1.000 kitap; kayıtlar küçük paketlerle eklenir. Mevcut Sayfa kimlikleri üzerine yazılmaz. Kimliksiz CSV kayıtları için başlık/yazar/ISBN/biçimden sabit bir kimlik üretilir; aynı CSV yeniden yüklendiğinde tekrar eklenmez. Farklı kimlikteki ayrı kitap kopyaları korunur. Başka bir CSV, aynı kitabı farklı kimlikle tanımlıyorsa ayrı kayıt sayılabilir.
+
+İçe aktarma durdurulabilir. Sunucunun zaten aldığı paket kaydedilmiş olabilir; aynı CSV tekrar yüklenerek güvenle devam edilebilir. Yeni dosya seçimi önceki dosya adını temizler. Tüm yazma ve dışa aktarma işlemleri oturum sahibine özeldir; CSV'den hesap veya depolama nesnesi kimliği alınmaz.
+
+**CSV orijinal PDF/EPUB dosyalarını veya yüklenmiş kapak resimlerini içermez.** Dosya adları ve sayısı bilgi olarak yazılır. Özel/eski sunucuya bağlı kapak bağlantıları yeniden içe aktarılmaz. Belgeleri/özel kapakları ayrı taşıyın; CSV içe aktarması mevcut orijinal dosyaları silmez. CSV dosyası kişisel notları ve ödünç alan kişileri de içerir; kendi yedeğiniz olarak saklayın.

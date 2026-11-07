@@ -7,3 +7,5 @@ await build({entryPoints:['client/ocr-reader.mjs'],outfile:'public/ocr-reader.js
 await copyFile('node_modules/tesseract.js/dist/worker.min.js','public/tesseract-worker.js');
 
 await build({entryPoints:['client/auth-client.mjs'],outfile:'public/auth-client.js',bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true});
+
+await build({entryPoints:['client/library-transfer.mjs'],outfile:'public/library-transfer.js',bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true});

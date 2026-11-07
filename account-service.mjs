@@ -1,7 +1,10 @@
+import {exportCSV,importCSV} from './csv-transfer-service.mjs';
 import {limits,storageUsage} from './quota-service.mjs';
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'private, no-store'}});
 export async function accountRequest(request,env){
  const path=new URL(request.url).pathname;
+ if(path==='/api/account/export.csv'&&request.method==='GET')return exportCSV(env);
+ if(path==='/api/account/import-csv'&&request.method==='POST')return importCSV(request,env);
  if(path==='/api/account'&&request.method==='GET'){const count=await env.DB.prepare('SELECT COUNT(*) AS n FROM books WHERE owner_id=?').bind(env.USER.id).first();return json({user:env.PUBLIC_USER,books:count.n,storageBytes:await storageUsage(env),limits:limits(env)});}
  if(path==='/api/account'&&request.method==='PATCH'){const input=await request.json(),name=String(input.displayName||'').trim();if(!name||name.length>100)throw Error('Adınız 1–100 karakter olmalıdır.');await env.DB.prepare('UPDATE users SET display_name=? WHERE id=?').bind(name,env.USER.id).run();return json({...env.PUBLIC_USER,displayName:name});}
  if(path==='/api/account/export'&&request.method==='GET'){const {results:rows}=await env.DB.prepare('SELECT id,data,created_at FROM books WHERE owner_id=?').bind(env.USER.id).all();const {results:categories}=await env.DB.prepare('SELECT id,name FROM categories WHERE owner_id=?').bind(env.USER.id).all();return json({app:'Sayfa',version:1,user:env.PUBLIC_USER,books:rows.map(r=>({...JSON.parse(r.data),id:r.id,createdAt:r.created_at})),categories,notice:'Bu dosya orijinal belge dosyalarını içermez.'});}

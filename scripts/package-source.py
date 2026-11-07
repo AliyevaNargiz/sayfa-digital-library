@@ -3,7 +3,7 @@ import json, pathlib, subprocess, sys, zipfile
 root=pathlib.Path(__file__).resolve().parent.parent
 output=root/'public'/'necle-library-source.zip'
 tracked=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=root).decode().split('\0')
-compiled=['public/file-metadata.js','public/pdf.worker.mjs','public/ocr-reader.js','public/tesseract-worker.js','public/auth-client.js']
+compiled=['public/file-metadata.js','public/pdf.worker.mjs','public/ocr-reader.js','public/tesseract-worker.js','public/auth-client.js','public/library-transfer.js']
 excluded={'.git','.data','node_modules','dist','.wrangler','__pycache__'}
 def allowed(name):
  p=pathlib.PurePosixPath(name)

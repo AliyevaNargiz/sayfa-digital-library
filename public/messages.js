@@ -2209,5 +2209,185 @@ window.SAYFA_MESSAGES={
   "THE READING ROOM / SAYFA",
   "OXU OTAĞI / SAYFA",
   "ЧИТАЛЬНЫЙ ЗАЛ / SAYFA"
+ ],
+ "Kitaplığını yanında götür.": [
+  "Take your library with you.",
+  "Kitabxananı özünlə apar.",
+  "Заберите библиотеку с собой."
+ ],
+ "Tüm kitap kayıtlarını tek CSV dosyasıyla indir veya başka bir katalogdan topluca ekle. Başlıklar, açıklamalar, notlar, kategoriler, okuma ve ödünç bilgileri korunur.": [
+  "Download all your book records as one CSV, or import a catalogue in bulk. Titles, descriptions, notes, categories, reading status, and lending details are preserved.",
+  "Bütün kitab qeydlərini bir CSV faylı ilə endir və ya başqa kataloqdan toplu əlavə et. Adlar, təsvirlər, qeydlər, kateqoriyalar, oxu və borcvermə məlumatları saxlanır.",
+  "Скачайте все записи о книгах в одном CSV или импортируйте каталог целиком. Названия, описания, заметки, категории, статусы чтения и данные о выдаче сохраняются."
+ ],
+ "CSV indir": [
+  "Download CSV",
+  "CSV endir",
+  "Скачать CSV"
+ ],
+ "CSV yükle": [
+  "Import CSV",
+  "CSV yüklə",
+  "Импортировать CSV"
+ ],
+ "Örnek CSV indir": [
+  "Download CSV template",
+  "CSV nümunəsini endir",
+  "Скачать образец CSV"
+ ],
+ "JSON verilerini indir": [
+  "Download JSON data",
+  "JSON məlumatlarını endir",
+  "Скачать данные JSON"
+ ],
+ "CSV kitap kayıtlarını taşır; PDF/EPUB dosyalarının veya yüklenen kapakların kendisini içermez. Dosya adları bilgi olarak eklenir. Başka bir uygulamanın CSV alanlarını desteklemesi gerekir.": [
+  "CSV transfers book records, not the PDF/EPUB files or uploaded cover images. Filenames are included for reference. Other apps need to support these CSV fields.",
+  "CSV kitab qeydlərini köçürür; PDF/EPUB fayllarının və yüklənmiş üz qabıqlarının özünü daşımır. Fayl adları məlumat üçün əlavə edilir. Başqa tətbiq bu CSV sahələrini dəstəkləməlidir.",
+  "CSV переносит записи о книгах, но не сами PDF/EPUB или загруженные обложки. Имена файлов добавлены для справки. Другое приложение должно поддерживать эти поля CSV."
+ ],
+ "İçe aktarmadan önce": [
+  "Before importing",
+  "İdxaldan əvvəl",
+  "Перед импортом"
+ ],
+ "Yeni kayıtlar eklenir. Aynı Sayfa kimliğine sahip mevcut kitaplar atlanır; bilgilerinin üzerine yazılmaz.": [
+  "New records are added. Existing books with the same Sayfa ID are skipped; their details are not overwritten.",
+  "Yeni qeydlər əlavə olunur. Eyni Sayfa kimliyinə malik mövcud kitablar ötürülür; məlumatları dəyişdirilmir.",
+  "Новые записи добавляются. Книги с тем же ID Sayfa пропускаются; их данные не перезаписываются."
+ ],
+ "Kitaplığıma ekle": [
+  "Add to my library",
+  "Kitabxanama əlavə et",
+  "Добавить в библиотеку"
+ ],
+ "CSV hazırlanıyor…": [
+  "Preparing CSV…",
+  "CSV hazırlanır…",
+  "Готовим CSV…"
+ ],
+ "CSV indirildi. Bu dosya özel notlarını ve ödünç bilgilerini de içerir.": [
+  "CSV downloaded. It also contains your private notes and lending details.",
+  "CSV endirildi. Faylda şəxsi qeydlərin və borcvermə məlumatların da var.",
+  "CSV скачан. Он также содержит личные заметки и данные о выдаче."
+ ],
+ "{0} kitap · {1} kategori · {2} hatalı satır": [
+  "{0} books · {1} categories · {2} invalid rows",
+  "{0} kitab · {1} kateqoriya · {2} xətalı sətir",
+  "{0} книг · {1} категорий · {2} строк с ошибками"
+ ],
+ "CSV orijinal belge dosyalarını içermez. Dosyalar ayrıca taşınmalıdır.": [
+  "CSV does not include original document files. Move them separately.",
+  "CSV orijinal sənəd fayllarını əhatə etmir. Fayllar ayrıca köçürülməlidir.",
+  "CSV не содержит исходных документов. Их нужно перенести отдельно."
+ ],
+ "Özel veya desteklenmeyen kapak bağlantıları aktarılmadı.": [
+  "Private or unsupported cover links were not imported.",
+  "Şəxsi və ya dəstəklənməyən üz qabığı linkləri köçürülmədi.",
+  "Личные или неподдерживаемые ссылки на обложки не перенесены."
+ ],
+ "CSV orijinal belge dosyalarını içermez. Dosyalar ayrıca taşınmalıdır. Özel veya desteklenmeyen kapak bağlantıları aktarılmadı.": [
+  "CSV does not include document files; move them separately. Private or unsupported cover links were not imported.",
+  "CSV sənəd fayllarını əhatə etmir; onları ayrıca köçür. Şəxsi və ya dəstəklənməyən üz qabığı linkləri köçürülmədi.",
+  "CSV не содержит документов: перенесите их отдельно. Личные или неподдерживаемые обложки не перенесены."
+ ],
+ "Satır": [
+  "Row",
+  "Sətir",
+  "Строка"
+ ],
+ "CSV okunuyor…": [
+  "Reading CSV…",
+  "CSV oxunur…",
+  "Читаем CSV…"
+ ],
+ "İçe aktarmayı durdur": [
+  "Stop import",
+  "İdxalı dayandır",
+  "Остановить импорт"
+ ],
+ "{0} / {1} işlendi · {2} eklendi · {3} atlandı": [
+  "{0} / {1} processed · {2} added · {3} skipped",
+  "{0} / {1} işləndi · {2} əlavə edildi · {3} ötürüldü",
+  "Обработано {0} / {1} · добавлено {2} · пропущено {3}"
+ ],
+ "İçe aktarma tamamlandı: {0} kitap eklendi, {1} kitap atlandı.": [
+  "Import complete: {0} books added, {1} skipped.",
+  "İdxal tamamlandı: {0} kitab əlavə edildi, {1} kitab ötürüldü.",
+  "Импорт завершён: добавлено {0} книг, пропущено {1}."
+ ],
+ "İçe aktarma durduruldu. Sunucuya ulaşan kayıtlar kaydedilmiş olabilir. Aynı CSV ile güvenle devam edebilirsiniz.": [
+  "Import stopped. Records received by the server may have been saved. Resume safely with the same CSV.",
+  "İdxal dayandırıldı. Serverə çatan qeydlər saxlanmış ola bilər. Eyni CSV ilə təhlükəsiz davam edə bilərsən.",
+  "Импорт остановлен. Полученные сервером записи могли сохраниться. Можно безопасно продолжить с тем же CSV."
+ ],
+ "Kitap sınırına ulaşıldı. Kaydedilenler korunur; CSV dosyasını yeniden yükleyerek devam edebilirsiniz.": [
+  "Book limit reached. Saved records are kept; reimport the CSV to resume when space is available.",
+  "Kitab limitinə çatılıb. Saxlanmış qeydlər qalır; yer olduqda CSV-ni yenidən yükləyib davam edə bilərsən.",
+  "Достигнут лимит книг. Сохранённые записи остаются; повторите импорт, когда появится место."
+ ],
+ "CSV dosyası en fazla 20 MB olabilir.": [
+  "CSV files can be up to 20 MB.",
+  "CSV faylı ən çox 20 MB ola bilər.",
+  "Размер CSV — до 20 МБ."
+ ],
+ "CSV dosyasında çok fazla sütun var.": [
+  "The CSV has too many columns.",
+  "CSV-də çox sütun var.",
+  "В CSV слишком много столбцов."
+ ],
+ "Bir CSV dosyasında en fazla 1000 kitap olabilir.": [
+  "A CSV can contain up to 1,000 books.",
+  "Bir CSV-də ən çox 1.000 kitab ola bilər.",
+  "В одном CSV может быть до 1 000 книг."
+ ],
+ "CSV tırnak işaretleri geçersiz.": [
+  "The CSV has malformed quotation marks.",
+  "CSV-də dırnaq işarələri düzgün deyil.",
+  "Некорректные кавычки в CSV."
+ ],
+ "CSV kitap biçimi tanınmadı. physical veya digital kullanın.": [
+  "Unknown book format. Use physical or digital.",
+  "Kitab formatı tanınmadı. physical və ya digital istifadə et.",
+  "Неизвестный формат книги. Используйте physical или digital."
+ ],
+ "CSV kitap kimliği geçersiz.": [
+  "Invalid book ID in CSV.",
+  "CSV-də kitab kimliyi düzgün deyil.",
+  "Некорректный ID книги в CSV."
+ ],
+ "CSV dosyası boş.": [
+  "The CSV is empty.",
+  "CSV faylı boşdur.",
+  "CSV пуст."
+ ],
+ "CSV dosyasında title veya Kitap adı sütunu olmalıdır.": [
+  "The CSV needs a title or Book title column.",
+  "CSV-də title və ya Kitabın adı sütunu olmalıdır.",
+  "В CSV нужен столбец title или Название книги."
+ ],
+ "CSV dosyasında yinelenen sütun adları var.": [
+  "The CSV has duplicate column names.",
+  "CSV-də təkrarlanan sütun adları var.",
+  "Повторяющиеся названия столбцов в CSV."
+ ],
+ "CSV satırındaki sütun sayısı başlıkla eşleşmiyor.": [
+  "The row has more columns than the header.",
+  "Sətirdəki sütun sayı başlıqla uyğun gəlmir.",
+  "В строке больше столбцов, чем в заголовке."
+ ],
+ "CSV kategorileri geçersiz.": [
+  "Invalid CSV categories.",
+  "CSV kateqoriyaları düzgün deyil.",
+  "Некорректные категории CSV."
+ ],
+ "CSV içe aktarma paketi çok büyük.": [
+  "This import batch is too large.",
+  "İdxal paketi çox böyükdür.",
+  "Пакет импорта слишком большой."
+ ],
+ "CSV içe aktarma paketi geçersiz.": [
+  "Invalid import batch.",
+  "İdxal paketi düzgün deyil.",
+  "Некорректный пакет импорта."
  ]
 };
