@@ -1,81 +1,169 @@
-# Sayfa
+# Sayfa — rəqəmsal kitabxanan
 
-Türkçe, telefon/tablet/bilgisayara uygun kişisel kitaplık uygulaması. Her kullanıcı kendi hesabında fiziksel ve dijital kitaplarını aynı katalogda tutar. Yeni hesaplar boş başlar; başka kullanıcıların kitapları paylaşılmaz.
+Fiziki kitabları, PDF/EPUB sənədlərini, şəxsi qeydləri və oxu vəziyyətini bir hesabda birləşdirən, telefon, planşet və kompüter üçün şəxsi kitabxana tətbiqi.
 
-## Özellikler
+**Canlı tətbiq:** https://sayfa-kitaplik.ahmadnargizgpt.chatgpt.site
 
-- Merkezlenmiş ana sayfa; kâğıt, ahşap, koyu yeşil ve kiremit renkler; kitaplık fotoğrafı, katalog kartı, Noto Serif başlıklar ve Source Sans 3 metin. Fontlar yerelden sunulur.
-- İngilizce, Türkçe, Azerbaycanca ve Rusça arayüz; ilk ziyarette barındırma ülke bilgisi, bölgesel saat dilimi ve cihaz diline göre öneri, bayrak ve yerel dil adlarıyla seçim, hatırlanan tercih ve hesap ayarlarından değiştirme. Kitap bilgileri ve kullanıcı içeriği çevrilmez.
-- Giriş/kayıt, kitaplık, okuma rehberi ve hesap ekranları. Hareket azaltma tercihine saygılı hafif animasyonlar ve küçük ekranlara uygun düzen.
-- Elle ekleme ve kitap adı/ISBN ile kapak, yazar, yayınevi, açıklama ve diğer katalog bilgilerini otomatik bulma. Bulunamayan bilgi uydurulmaz; her alan düzenlenebilir.
-- Telefon kamerasından veya galeriden çoklu fotoğraf. Tesseract.js Türkçe/İngilizce metni cihazda okur; metin/ISBN kitap kataloglarında aranır. Kaydetmeden önce adaylar incelenir. Net kapak fotoğrafları önerilir.
-- PDF, EPUB, ofis/metin belgelerini toplu yükleme, metadata/metin/kapak çıkarma; aynı kullanıcının aynı dosyası tekrar eklenmez. Dosya başına 25 MB, fotoğraf başına 15 MB. İçe aktarma durdurulabilir; yeni işlem önceki dosya adlarını temizler.
-- Kategoriler, biçim ve okuma filtreleri, toplu silme/okundu, ödünç/iade ve kişisel notlar. Toplu işlem bitince seçim kapanır.
-- Okuma rehberi kendi kitaplığını başlık, açıklama ve çıkarılmış belge metniyle eşleştirir. **Üretken AI bağlı değildir**; anahtar veya ücretli servis gerektirmez. Taranmış PDF metni otomatik okunmaz.
-- PWA manifesti ve kitap simgesi; tarayıcının standart ana ekrana ekleme özelliği kullanılabilir. Uygulama internet gerektirir. Özel kayıtlar/dosyalar service worker önbelleğine yazılmaz.
+**Mənbə kodu:** https://github.com/AliyevaNargiz/sayfa-digital-library
 
-## Kimlik ve özel veriler
+Hər istifadəçi öz hesabı ilə daxil olur və yalnız öz kitablarını, kateqoriyalarını və fayllarını görür. Yeni kitabxana boş başlayır. Google ilə giriş Firebase Authentication vasitəsilə işləyir; kitab bazası və sənədlər ayrıca D1/R2 deposunda saxlanır.
 
-Canlı Sites yapılandırmasında Firebase Authentication üzerinden Google girişi kullanılır. Firebase değişkenleri tanımlı değilse platformun yönetilen ChatGPT girişi kullanılır. Kullanıcı kayıt profili doğrulanmış platform kimliğinden oluşturulur; uygulama şifre tutmaz. Halka açık ana sayfa, API erişimi anlamına gelmez. Kitap, kategori ve dosya erişimleri sunucuda kullanıcı kimliğiyle sınırlandırılır. Başka hesaba ait dosya bağlantıları çalışmaz.
+## Dəyişiklik tarixçəsi
 
-İsteğe bağlı Firebase modülü e-posta/şifre, e-posta doğrulama, şifre sıfırlama ve Google girişini içerir. Google sağlayıcısı Firebase projesinde etkinleştirilip Site runtime ayarlarıyla bağlanır. E-posta/şifre arayüzü varsayılan olarak gizlidir; bu sağlayıcı ayrıca etkinleştirilip `FIREBASE_EMAIL_PASSWORD_ENABLED=true` ayarlanmalıdır. Kendi barındırmanızda Firebase Authentication içinde Email/Password ve Google sağlayıcılarını etkinleştirin, alan adınızı authorized domains listesine ekleyin; aşağıdaki runtime değişkenlerini ayarlayın:
+Tarixlər mövcud Git commit-lərinə əsaslanır və Bakı vaxtı ilə göstərilir. Eyni gün ərzində bir neçə mərhələ tamamlanıb. Aşağıda əvvəlki dizaynlar tarixçə kimi qeyd edilir; cari görünüş isti rəngli oxu otağı dizaynıdır.
 
-- `FIREBASE_PROJECT_ID`, `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, isteğe bağlı `FIREBASE_APP_ID`.
-- `APP_OWNER_EMAIL`: doğrulanmış yönetici e-postası; gizli sunucu ayarı olarak tutun. İlk kayıt olan kişi yönetici olmaz.
+### İlkin şəxsi kitabxana — Sayfa-dan əvvəl
 
-Firebase ID token imzası/issuer/audience/expiry/verified email sunucuda doğrulanır. Dosya erişimi için kısa süreli HttpOnly, Secure, SameSite cookie kullanılır. Sağlayıcı değiştirirken aynı doğrulanmış e-posta mevcut uygulama hesabına bağlanır. Canlı sağlayıcı bağlantısı olmadan Google/e-posta uçtan uca testi yapılmış sayılmaz.
+Bu mərhələlər Ahmadın ayrıca şəxsi kitabxanasının Git tarixçəsindədir. Onun şəxsi kitab siyahısı və canlı məlumatları bu depoya köçürülmür.
 
-Yalnız yönetici hesap adlarını, e-postaları, kayıt ve kullanım bilgilerini görebilir; yönetim ekranı kitap içeriği sunmaz. Hesap ekranı kendi katalog bilgilerini dışa aktarır ve kendi kitaplığını/dosyalarını silebilir. Katalog dışa aktarımı dosya baytlarını içermez. Kitaplığı silmek giriş sağlayıcısı hesabını veya uygulama profilini silmez.
+| Tarix | Edilən işlər |
+| --- | --- |
+| **21 oktyabr 2026** | İlkin şəxsi kitabxana və qalıcı saxlama quruldu. Ahmadın 140 kitablıq fiziki kolleksiyası əlavə edildi. Klassik kitabxana görünüşü, fotoşəkilli isti dizayn, araşdırılmış üz qabıqları və internetdən üz qabığı seçimi yaradıldı. |
+| **28 oktyabr 2026** | Kitab adı ilə avtomatik məlumat doldurma, şəxsi rəqəmsal kitabxana və toplu sənəd yükləmə əlavə edildi. İdxalı dayandırmaq, çoxlu kitab seçmək, toplu əməliyyatlar, quraşdırılan web tətbiqi, təsvirlər və mətn/mövzu üzrə axtarış hazırlandı. |
+| **4 noyabr 2026** | İşlək mənbə kodu paketi və öz serverində yerləşdirmə sənədləri hazırlandı. Sonra yeni, boş kitabxana layihəsinə keçildi. |
 
-Eski tek kullanıcılı veriler migration sonrasında sahipsiz, erişime kapalı kalır; yalnız `APP_OWNER_EMAIL` ile eşleşen doğrulanmış yöneticiye atanır. Ahmad’ın bağımsız uygulaması otomatik aktarılmaz veya silinmez.
+### Bu deponun inkişafı — Necle-dən Sayfa-ya
 
-## Depolama ve başlangıç sınırları
+| Tarix | Yenilik | Commit |
+| --- | --- | --- |
+| **4 noyabr 2026** | Necle üçün müstəqil, boş başlayan türk dilli kitabxana yaradıldı. Fiziki və rəqəmsal kitablar vahid kataloqda birləşdirildi. Kateqoriyalar, əl ilə və ad/ISBN ilə əlavə etmə, cihazda pulsuz OCR və bir neçə foto ilə kitab əlavə etmə hazırlandı. | [`1480cbb`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/1480cbb9024973115edc71be52086092f7953dba) |
+| **5 noyabr 2026** | Layihə **Sayfa** adlı vahid, çoxistifadəçili tətbiqə çevrildi. Şəxsi hesablar, giriş/qeydiyyat səhifələri, hər hesab üçün ayrı kitab/fayl/kateqoriya məlumatları, sahibə məxsus idarəetmə paneli və saxlama limitləri əlavə edildi. | [`f91bf46`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/f91bf46aa8fb7ae371edd8cbe3b79cc4ff36d921) |
+| **5 noyabr 2026** | İngilis, türk, Azərbaycan və rus dilləri, ilk girişdə dil təklifi və seçim pəncərəsi əlavə edildi. Loqo, ana ekran simgesi, animasiyalar və uyğunlaşan ekran ölçüləri yeniləndi. | [`f76d5d1`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/f76d5d13bcd7bbcca69b9b6de0e85c8e1fab24ab) |
+| **5 noyabr 2026** | Cari isti oxu otağı dizaynı quruldu: kitab rəfi fotosu, kataloq kartı və aydın əlavə etmə seçimləri. Kitabxanada ayrıca filtr paneli və telefonda yığılan filtrlər yaradıldı. Bölgə/Bakı saat qurşağı əsasında dil təklifi düzəldildi; dil seçimi açıq təsdiqdən sonra yadda saxlanır. Noto Serif fontuna keçilərək **Ə/ə** və Kiril hərfləri yoxlandı. | [`6007454`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/6007454ac90f6a90249356b599f5238b5db71087) |
+| **7 noyabr 2026** | **CSV endirmə və toplu idxal** əlavə edildi: kitab məlumatları, qeydlər, kateqoriyalar, tarixlər və oxu/borcvermə vəziyyəti daşınır. Sətir yoxlaması, təkrarlanan qeydlərin ötürülməsi, idxalı dayandırma və eyni CSV ilə davam etmə hazırlandı. | [`00afecf`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/00afecf88a851c8cd14f0066b69d3a43a886d771) |
+| **7 noyabr 2026** | **Google ilə giriş** Firebase Authentication vasitəsilə qoşuldu. Eyni təsdiqlənmiş e-poçtla mövcud hesabın saxlanması yoxlandı. Aktiv olmayan e-poçt/şifrə forması gizlədildi. Bu mərhələdə 42 avtomatik test keçdi. | [`41713a8`](https://github.com/AliyevaNargiz/sayfa-digital-library/commit/41713a8958571fac6157bf364885213064e060a4) |
+| **7 noyabr 2026** | Bütün mənbə kodunun və əvvəlki Sayfa commit-lərinin bu GitHub deposuna köçürülməsi, Azərbaycan dilində aktual README və tarixçə, gələcək dəyişiklikləri GitHub-a göndərmə qaydası hazırlandı. | Bu README-ni əlavə edən commit |
 
-Sites sürümü yönetilen D1 veritabanı ve R2 dosya deposu kullanır. Varsayılan sınırlar: 200 hesap, kullanıcı başına 1.000 kitap ve 100 MB dosya, uygulama genelinde 10.000 kitap ve 1.000 MB dosya. Eşzamanlı yüklemeler atomik rezervasyonla sınırlandırılır. Ayarlanabilen değişkenler: `MAX_USERS`, `MAX_USER_BOOKS`, `MAX_TOTAL_BOOKS`, `MAX_USER_STORAGE_MB`, `MAX_TOTAL_STORAGE_MB`.
+Sonrakı tamamlanmış dəyişikliklər də bu cədvələ real tarixləri ilə əlavə edilməlidir. Tam commit siyahısı: [GitHub tarixçəsi](https://github.com/AliyevaNargiz/sayfa-digital-library/commits/main/).
 
-Bunlar uygulamanın koruma sınırlarıdır; sağlayıcı ücretsiz katmanını veya gelecekteki ücretleri garanti etmez. Trafik, belge metni ve platform kotalarını izleyin. Sınırsız ücretsiz depolama sunulmaz. Yayındaki veriler Git deposuna veya kaynak ZIP’ine dahil edilmez.
+## Hazırda nələr işləyir?
 
-## Yerel geliştirme
+- **Vahid kataloq:** fiziki və rəqəmsal kitabların hamısı bir yerdə görünür; ümumi, fiziki, rəqəmsal və oxunmuş kitab sayları ayrıca hesablanır.
+- **Şəxsi hesablar:** Google ilə giriş, hər istifadəçi üçün ayrı kitabxana, profil və istifadə göstəriciləri. İlk qeydiyyatdan keçən şəxs avtomatik idarəçi olmur.
+- **Əl ilə əlavə etmə:** kitab adı, müəllif, ISBN, nəşriyyat, il, dil, səhifə, kateqoriya, rəf, təsvir və şəxsi qeydlər.
+- **Avtomatik məlumat axtarışı:** ad və ya ISBN ilə kataloqlardan müəllif, üz qabığı və digər məlumatların tapılması. Məlumat tapılmadıqda uydurulmur; istifadəçi hər xananı dəyişə bilər.
+- **Foto ilə əlavə etmə:** telefon kamerası və ya qalereyadan bir neçə şəkil; Tesseract.js mətni cihazda oxuyur, tapılan kitablar saxlanmadan əvvəl yoxlanır. OCR hazırda türk və ingilis dili modellərindən istifadə edir. İnterfeys dilini dəyişmək OCR modelini avtomatik dəyişmir.
+- **Rəqəmsal sənədlər:** PDF, EPUB və dəstəklənən ofis/mətn fayllarının toplu yüklənməsi, məlumat/mətn/önizləmə çıxarılması və təkrarlanan faylların ötürülməsi. İdxal dayandırıla bilir; yeni proses əvvəlki fayl adlarını təmizləyir.
+- **Kitabxana idarəetməsi:** kateqoriyalar, axtarış, format və oxu filtrləri, sıralama, siyahı/üz qabığı görünüşü, toplu silmə və oxunub kimi işarələmə. Əməliyyatdan sonra seçim rejimi avtomatik bağlanır.
+- **Borcvermə:** borc alan şəxs, verilmə və qaytarılma tarixləri, qaytarılmış kitabın qeyd edilməsi.
+- **Oxu bələdçisi:** öz kitablarının adları, təsvirləri və oxuna bilən sənəd mətnlərində mövzu uyğunlaşdırılması. **Generativ AI qoşulmayıb.** Taranmış PDF-lərə avtomatik OCR tətbiq edilmir.
+- **Dörd dil:** Azərbaycan, türk, ingilis və rus. İlk ziyarətdə bölgə/cihaz əsasında təklif, sonra istifadəçinin təsdiqlənmiş seçimi. Kitab adları və istifadəçi məzmunu orijinal dilində qalır.
+- **Uyğunlaşan PWA:** telefon, planşet və kompüter üçün düzən, ana ekrana əlavə olunan ikon, azaldılmış hərəkət seçiminə uyğun animasiyalar. Kitabxana üçün internet lazımdır; şəxsi sənədlər service worker vasitəsilə oflayn keşlənmir.
+- **CSV/JSON:** kitab məlumatlarının endirilməsi, CSV ilə toplu bərpa, yoxlama və dayandırma. CSV/JSON orijinal PDF/EPUB fayllarının özünü daşımır.
 
-Node.js 24+ ve Python 3 gerekir:
+## Məlumatlar harada saxlanır?
+
+| Məlumat | Yer |
+| --- | --- |
+| Kitab qeydləri, kateqoriyalar, qeydlər, profil və istifadə miqdarı | Canlı sayta bağlı **Cloudflare D1** bazası |
+| Yüklənmiş sənədlər və şəxsi üz qabığı önizləmələri | Canlı sayta bağlı **Cloudflare R2** fayl deposu |
+| Google girişi | **Firebase Authentication** |
+| İnterfeys dili seçimi | İstifadəçinin brauzerində local storage |
+| Yerli inkişaf məlumatları | `.data/library.sqlite` və `.data/files/` |
+
+**GitHub mənbə kodunun tarixçəsidir; canlı kitabxananın bazası deyil.** Başqa cihazda eyni hesabla daxil olanda serverdəki həmin kitabxana açılır. Adi kod yeniləməsi üçün kitabları yenidən əlavə etmək lazım deyil: eyni D1/R2 bağlarını saxlamaq lazımdır.
+
+Bu depoya canlı bazalar, istifadəçi qeydləri, yüklənmiş şəxsi sənədlər, giriş tokenləri və runtime məxfi ayarları daxil edilmir. `data/` qovluğundakı başlanğıc kataloq faylları boşdur; Ahmadın şəxsi kolleksiyası ilə doldurulmur.
+
+Standart başlanğıc limitləri: **200 hesab**, hər hesaba **1.000 kitab və 100 MB fayl**, tətbiq üzrə **10.000 kitab və 1.000 MB fayl**. Dəyişənlər: `MAX_USERS`, `MAX_USER_BOOKS`, `MAX_TOTAL_BOOKS`, `MAX_USER_STORAGE_MB`, `MAX_TOTAL_STORAGE_MB`. Bunlar tətbiqin tutum limitləridir; provayderin limitsiz və ya daimi pulsuz xidmət zəmanəti deyil.
+
+## Yerli kompüterdə işə salmaq
+
+**Node.js 24+** tələb olunur. Mənbə ZIP-i yaratmaq üçün əlavə olaraq Python 3 lazımdır.
 
 ```sh
+git clone https://github.com/AliyevaNargiz/sayfa-digital-library.git
+cd sayfa-digital-library
 npm ci
 npm run build:client
 npm start
+```
+
+Brauzerdə **http://127.0.0.1:3000** açılır. Başlanğıc kitabxana boşdur. Yerli inkişaf rejimi etibarlı tək istifadəçi üçündür; kimlik xidməti qurmadan onu internetə açmayın.
+
+```sh
 npm test
 ```
 
-http://127.0.0.1:3000 açılır. Yerel geliştirme modu tek güvenilen kullanıcı içindir; kimlik sağlayıcısı yapılandırmadan internete açmayın. Yerel veriler `.data/library.sqlite` ve `.data/files/` içinde saklanır. Sunucuyu durdurup tüm `.data` klasörünü yedekleyin. Hazır kaynak ZIP’inde bağımlılıksız başlatma: `node scripts/start-portable.mjs`.
+Son tətbiq dəyişiklikləri üzrə **42 avtomatik test** keçib: hesablararası ayrılıq, icazələr, saxlama limitləri, migration, token yoxlaması, CSV və interfeys axınları. Gerçək Google hesabı ilə ilk giriş, telefon kamerası və cihazda PWA quraşdırılması ayrıca istifadəçi/cihaz yoxlaması tələb edir.
 
-Arayüz: vanilla JavaScript, HTML ve CSS. Sunucu: JavaScript ES modules / Cloudflare Workers. Veritabanı: SQLite/D1, Drizzle şema/migration; dosyalar R2. Tarayıcı modülleri esbuild ile derlenir. React/Next.js kullanılmaz. OCR: Tesseract.js, PDF: PDF.js, kimlik: Firebase SDK / Google veya yapılandırılmamış kopyalarda yönetilen ChatGPT.
+Yerli ehtiyat nüsxə üçün serveri dayandırıb `.data` qovluğunu bütöv kopyalayın.
 
-Arayüz `public/`, sunucu kökteki `.mjs`, belge/OCR/kimlik modülleri `client/` içindedir. Client değişikliklerinden sonra `npm run build:client` gerekir.
+## Kodun quruluşu
 
-## Dağıtım
+| Yol | Vəzifə |
+| --- | --- |
+| `public/index.html`, `public/style.css`, `public/app.js` | Səhifələr, dizayn və interfeys əməliyyatları |
+| `public/i18n.js`, `public/messages.js` | Dil təklifi, seçim və tərcümələr |
+| `public/auth-ui.js`, `client/auth-client.mjs` | Google/Firebase giriş interfeysi və SDK |
+| `worker.mjs`, `hosted-entry.mjs`, `selfhost-entry.mjs` | API və yerləşdirmə giriş nöqtələri |
+| `server.mjs`, `local-bucket.mjs` | Yerli SQLite və fayl saxlama |
+| `identity-service.mjs`, `account-service.mjs` | Hesab kimliyi, profil və idarəetmə |
+| `book-data.mjs`, `category-service.mjs`, `quota-service.mjs` | Qeyd yoxlaması, kateqoriyalar və limitlər |
+| `metadata-service.mjs`, `cover-service.mjs`, `description-service.mjs` | Kitab/üz qabığı axtarışı və təsvirlər |
+| `digital-service.mjs`, `photo-service.mjs` | Şəxsi sənəd və foto önizləməsi |
+| `client/file-metadata.mjs`, `client/ocr-reader.mjs` | Sənəd təhlili və cihazda OCR |
+| `csv-library.mjs`, `csv-transfer-service.mjs`, `client/library-transfer.mjs` | CSV çevirmə, endirmə və idxal |
+| `assistant-service.mjs` | Mətn/mövzu uyğunlaşdırılması |
+| `locale-service.mjs` | Hosting ölkə məlumatından dil üçün ipucu |
+| `db/schema.ts`, `drizzle/`, `migrations/` | Baza sxemi və migration faylları |
+| `test/` | API və interfeys testləri |
+| `scripts/` | Yığma, mənbə paketi və lokal başlatma |
 
-Mevcut Sites kimliği ve `DB`/`BUCKET` bağlarını `.openai/hosting.json` içinde koruyun. Secret değerleri manifest veya Git’e koymayın. Migration dosyaları uygulanmışsa değiştirmeyin; yeni migration üretin. Kaynak commit/push sonrası aynı durumdan `node scripts/build-hosted.mjs` ile artifact oluşturun.
+İnterfeys **vanilla JavaScript, HTML və CSS**, server **JavaScript ES modules / Cloudflare Workers**, baza **SQLite/D1** üzərindədir. Şəma/migration üçün Drizzle, brauzer modulları üçün esbuild, OCR üçün Tesseract.js, PDF üçün PDF.js istifadə olunur. React/Next.js istifadə edilmir.
 
-Kendi Cloudflare hesabınızda D1/R2 oluşturup `wrangler.jsonc` yer tutucularını doldurun, Firebase’i yapılandırın, `npm run db:remote` ardından `npm run deploy` çalıştırın. GitHub Pages tek başına özel API/veritabanını çalıştırmaz. Sağlayıcı koşulları geçerlidir.
+`node_modules`, `dist` və yığılmış üçüncü tərəf brauzer paketləri Git-də saxlanmır; bunlar `npm ci` və `npm run build:client` ilə yaradılır. Onları yaradan bütün mənbə kodu, `package.json` və kilid faylı depodadır.
 
-## Gizlilik ve doğrulama
+## Google və runtime ayarları
 
-OCR ilk kullanımda dil dosyalarını jsDelivr üzerinden indirir. Fotoğraf harici OCR servisine gönderilmez. Bulunan metin/ISBN Ali & Nino ve Open Library kataloglarına gönderilir. Dosyalar kullanıcıya ait depoda saklanır; konu eşleştirme sunucuda kendi kayıtları üzerinde çalışır. Bulunamayan açıklama açıkça belirtilir, konu özeti uydurulmaz.
+Aşağıdakı dəyərlər hostingin runtime ayarlarında verilir; real dəyərlər Git-ə yazılmır:
 
-Testler API, kullanıcılar arası izolasyon, migration, yetkiler, eşzamanlı depolama kotası, token doğrulama ve arayüz akışlarını kapsar. Gerçek telefon kamerası, cihaz kurulumu ve bağlanmamış Firebase sağlayıcısı ayrı cihaz/sağlayıcı testi gerektirir. Kapak resimleri ilgili hak sahiplerine aittir.
+- `FIREBASE_PROJECT_ID`, `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_APP_ID` — Firebase web konfiqurasiyası.
+- `FIREBASE_EMAIL_PASSWORD_ENABLED=true` — yalnız həmin Firebase provayderi ayrıca aktivdirsə e-poçt/şifrə formasını göstərir. Standart olaraq gizlidir.
+- `APP_OWNER_EMAIL` — təsdiqlənmiş tətbiq sahibinin e-poçtu; serverdə məxfi ayardır.
 
-E-posta/Google girişinin neden isteğe bağlı olduğu, hangi verinin nerede saklandığı ve adım adım kurulum için [FIREBASE-SETUP.md](FIREBASE-SETUP.md) dosyasına bakın.
+Firebase konfiqurasiyası olmayan **Sites** nüsxəsində platformanın ChatGPT girişi ehtiyat rejim kimi istifadə olunur. Eyni təsdiqlənmiş e-poçtla Google girişi mövcud Sayfa hesabına bağlanır. İstifadəçi göndərdiyi məlumatla özünü idarəçi edə bilmir.
 
-Başlık ve gövde fontlarının Ə/ə ve tüm Azerbaycan Latin harfleri ile Kiril glifleri kontrol edildi. Dil seçimi yalnız açık onaydan sonra saklanır. Önceki sürümün eski dil tercihi bir defa yeniden onaylanır. Bölge uç noktası yalnız barındırmanın güvenilir `request.cf.country` bilgisini kullanır; GPS veya harici IP servisi çağrılmaz, konum veritabanına yazılmaz. Ülke bilgisi yoksa Bakü saat dilimi Azerbaycancayı önerir; onaylanan tercih her zaman önceliklidir.
+Addımlar: [Firebase və saxlama təlimatı](FIREBASE-SETUP.md). Tətbiq Analytics SDK-sını başlatmır; kitablar Firestore/Firebase Storage-a avtomatik köçürülmür.
 
-## CSV ile kitaplığı taşıma
+## Yerləşdirmə
 
-**Hesabım → Kitaplığını yanında götür → CSV indir / CSV yükle.** CSV, UTF-8 BOM ve standart alıntılama ile hazırlanır; Azerbaycanca/Kiril harfleri, virgüller, çift tırnaklar ve çok satırlı açıklama/notlar korunur. Elektronik tablo formülleri düz metin olarak dışa aktarılır, Sayfa tekrar yüklerken özgün metni geri alır.
+Canlı Sites layihəsinin kimliyi `.openai/hosting.json` faylındadır. Mövcud layihəni yeniləyərkən bu kimliyi, `DB` və `BUCKET` bağlarını qoruyun. GitHub-a push etmək mövcud saytı öz-özünə yayımlamır.
 
-Tüm kitap kayıtları (fiziksel/dijital ayrımı, okuma durumu, notlar, açıklama, ödünç alan/tarihler, ISBN, yayınevi, dil, raf, kapak bilgisi ve çıkarılmış belge metni) ve boş kategoriler taşınır. Sabit İngilizce sütun adları diğer uygulamalarda eşleme yapmayı kolaylaştırır. Türkçe, Azerbaycanca ve Rusça temel sütun adları ile virgül/noktalı virgül/sekme ayracı da okunabilir. Diğer uygulamaların Sayfa CSV alanlarını desteklemesi veya eşlemesi gerekir.
+Öz Cloudflare hesabınız üçün `wrangler.jsonc` daxilində D1 baza ID-sini və R2 bucket ayarlarını uyğunlaşdırın, Firebase/runtime ayarlarını qurun, yeni migration-ları tətbiq edin və yerləşdirin:
 
-Yükleme önce satırları denetler; hatalı satır varsa yazma başlamaz. En fazla 20 MB ve 1.000 kitap; kayıtlar küçük paketlerle eklenir. Mevcut Sayfa kimlikleri üzerine yazılmaz. Kimliksiz CSV kayıtları için başlık/yazar/ISBN/biçimden sabit bir kimlik üretilir; aynı CSV yeniden yüklendiğinde tekrar eklenmez. Farklı kimlikteki ayrı kitap kopyaları korunur. Başka bir CSV, aynı kitabı farklı kimlikle tanımlıyorsa ayrı kayıt sayılabilir.
+```sh
+npm run build:client
+npm run db:remote
+npm run deploy
+```
 
-İçe aktarma durdurulabilir. Sunucunun zaten aldığı paket kaydedilmiş olabilir; aynı CSV tekrar yüklenerek güvenle devam edilebilir. Yeni dosya seçimi önceki dosya adını temizler. Tüm yazma ve dışa aktarma işlemleri oturum sahibine özeldir; CSV'den hesap veya depolama nesnesi kimliği alınmaz.
+GitHub Pages təkbaşına bu server API-sini, şəxsi bazanı və fayl deposunu işə sala bilmir. Əvvəl tətbiq olunmuş SQL migration-larını dəyişməyin; yeni sxem dəyişikliyi üçün yeni migration əlavə edin. Bəzi daxili fayl/bucket adlarında layihənin əvvəlki `necle-library` adı qalıb; mövcud saxlama bağlarını kor-koranə dəyişməyin.
 
-**CSV orijinal PDF/EPUB dosyalarını veya yüklenmiş kapak resimlerini içermez.** Dosya adları ve sayısı bilgi olarak yazılır. Özel/eski sunucuya bağlı kapak bağlantıları yeniden içe aktarılmaz. Belgeleri/özel kapakları ayrı taşıyın; CSV içe aktarması mevcut orijinal dosyaları silmez. CSV dosyası kişisel notları ve ödünç alan kişileri de içerir; kendi yedeğiniz olarak saklayın.
+## Kitabxananı CSV ilə köçürmək
+
+**Hesabım → Kitabxananı özünlə apar → CSV endir / CSV yüklə**.
+
+CSV-də kitab məlumatları, çoxsətirli təsvir və qeydlər, kateqoriyalar, oxu/borcvermə vəziyyəti, tarixlər və çıxarılmış sənəd mətni saxlanır. Unicode və Ə/ə hərfləri qorunur. İdxaldan əvvəl xətalı sətirlər göstərilir. Hədd: **20 MB və 1.000 kitab**.
+
+Eyni Sayfa ID-si olan kitablar yenidən yazılmır. ID-siz CSV üçün sabit kimlik yaradılır; eyni faylı təkrar yükləmək təhlükəsiz davam etməyə imkan verir. Ayrı kimlikli eyni kitab nüsxələri ayrıca qala bilər. Başqa tətbiq bu CSV sütunlarını dəstəkləməli və ya uyğunlaşdırmalıdır.
+
+**CSV/JSON orijinal PDF/EPUB fayllarını və yüklənmiş üz qabığı şəkillərini daşımır.** CSV-də fayl adları məlumat üçün olur; orijinalları ayrıca köçürün. Köhnə serverə bağlı şəxsi üz qabığı linkləri idxal edilmir. CSV şəxsi qeydləri və borc alanların adlarını da daşıya bilər.
+
+## Hər dəyişiklikdən sonra GitHub-a göndərmək
+
+Bu layihənin GitHub deposu `AliyevaNargiz/sayfa-digital-library`-dir. Gələcək tamamlanmış dəyişikliklərdə README tarixçəsi və aidiyyəti sənədlər yenilənməli, uyğun yoxlamalar aparılmalı və yeni commit göndərilməlidir:
+
+```sh
+git add .
+git commit -m "Edilən dəyişikliyin qısa təsviri"
+git push github main
+```
+
+Bu iş sahəsində `github` bu depoya, `origin` isə Sites-in ayrıca mənbə deposuna aiddir. GitHub-dan yeni clone etdikdə GitHub uzaq deposunun adı adətən `origin` olur; onda `git push origin main` istifadə edilir. Canlı sayt üçün ayrıca Sites yığma/yayımlama axını qalır.
+
+Bu qayda gələcək agent işi üçün [AGENTS.md](AGENTS.md) faylında da qeyd edilir. Saytda istifadəçinin əlavə etdiyi kitablar mənbə kodu dəyişikliyi deyil və GitHub-a avtomatik push edilmir.
+
+Əlavə sənədlər: [qısa başlanğıc](START-HERE.md), [Firebase təlimatı](FIREBASE-SETUP.md), [ətraflı türk dilli təlimat](docs/README.tr.md).
+
+Font lisenziyaları `public/fonts/` daxilindədir. Kitab üz qabıqları və fotoşəkillərin hüquqları öz sahiblərinə məxsusdur.
